@@ -1,13 +1,15 @@
 create database if not exists Project;
 use Project;
-create table if not exists accounts(
-username varchar(100) not null,
-pword varchar(50) not null,
-fname varchar(100) not null,
-lname varchar(100) not null,
-ID varchar(100) not null primary key,
-accesslevel varchar(100) not null
+CREATE TABLE IF NOT EXISTS accounts (
+    username VARCHAR(100) NOT NULL,
+    pword VARCHAR(50) NOT NULL,
+    fname VARCHAR(100) NOT NULL,
+    lname VARCHAR(100) NOT NULL,
+    ID VARCHAR(100) NOT NULL PRIMARY KEY,
+    accesslevel VARCHAR(100) NOT NULL,
+    image BLOB  -- Column to store image data (BLOB type)
 );
+
 
 CREATE TABLE IF NOT EXISTS accountpic (
 ID VARCHAR(100) NOT NULL PRIMARY KEY,
@@ -15,16 +17,18 @@ picture LONGBLOB
 );
 
 create table if not exists requests(
-ID varchar(100) not null,
+requesterID varchar(100) not null,
 room varchar(100) not null,
 request varchar(500) not null,
 request_d varchar(100) not null,
 request_t varchar(100) not null,
+request_t_in varchar(100) not null,
+request_t_out varchar(100) not null,
 requestID int not null primary key auto_increment
 );
 
 create table if not exists sched(
-room_code varchar(100) not null primary key,
+room_code varchar(100) not null primary key, 
 room_name varchar(100) not null,
 building_letter varchar(10) not null,
 room_time varchar(100) not null,
@@ -51,6 +55,7 @@ building_letter varchar(10) not null
 );
 
 create table if not exists feedback(
+sender varchar(100) not null,
 ID varchar(100) not null,
 d varchar(100) not null,
 t varchar(100) not null,
@@ -58,6 +63,7 @@ feedback varchar(500) not null
 );
 
 create table if not exists report(
+sender varchar(100) not null,
 ID varchar(100) not null,
 d varchar(100) not null,
 t varchar(100) not null,
