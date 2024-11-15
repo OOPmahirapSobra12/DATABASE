@@ -31,7 +31,8 @@ create table if not exists sched(
 room_code varchar(100) not null primary key, 
 room_name varchar(100) not null,
 building_letter varchar(10) not null,
-room_time varchar(100) not null,
+room_time_in varchar(100) not null,
+room_time_out varchar(100) not null,
 room_day varchar(100) not null,
 room_date varchar(100),
 shed_id varchar(100) not null
@@ -41,17 +42,22 @@ create table if not exists schedtemp(
 room_code varchar(100) not null primary key,
 room_name varchar(100) not null,
 building_letter varchar(10) not null,
-room_time varchar(100) not null,
+room_time_in varchar(100) not null,
+room_time_out varchar(100) not null,
 room_date varchar(100) not null,
 room_day varchar(100),
 shed_id varchar(100) not null
 );
 
-create table if not exists roomlist(
-room_code varchar(100) not null primary key,
-room_name varchar(100) not null,
-room_status varchar(100) not null, -- Open or Closed
-building_letter varchar(10) not null
+CREATE TABLE IF NOT EXISTS roomlist (
+    room_code VARCHAR(100) NOT NULL PRIMARY KEY,
+    room_name VARCHAR(100) NOT NULL,
+    building VARCHAR(100) NOT NULL,
+    num_chairs INT NOT NULL,
+    num_computers INT,   -- Number of computers
+    num_laptops INT,     -- Number of laptops
+    occupancy_status VARCHAR(20) NOT NULL, -- Options: 'Occupied' or 'Not Occupied'
+    room_status VARCHAR(20) NOT NULL      -- Options: 'Open' or 'Closed'
 );
 
 create table if not exists feedback(
