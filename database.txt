@@ -55,7 +55,8 @@ sender varchar(100) not null,
 ID varchar(100) not null,
 d varchar(100) not null,
 t varchar(100) not null,
-feedback varchar(500) not null
+feedback varchar(500) not null,
+reply varchar(500)
 );
 
 create table if not exists report(
@@ -63,7 +64,8 @@ sender varchar(100) not null,
 ID varchar(100) not null,
 d varchar(100) not null,
 t varchar(100) not null,
-report varchar(500) not null
+report varchar(500) not null,
+reply varchar(500)
 );
  
  create table if not exists roomhistory(
